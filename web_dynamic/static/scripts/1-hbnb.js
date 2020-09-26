@@ -7,6 +7,6 @@ $(() => {
       } else {
         delete amenities[($(this).attr('data-id'))];
       }
-      $('div.amenities h4').text(Object.values(amenities).join(', '));
+      $('div.amenities > h4').text(Object.values(amenities).join(', '));
     });
 });
