@@ -14,7 +14,7 @@ $('document').ready(() => {
     contentType: 'application/json',
     dataType: 'json',
     success: (listPlaces) => {
-      for (let place of listPlaces) {
+      for (const place of listPlaces) {
         $('.placeontainer').append(
         `<article>
           <div class="title_place">
