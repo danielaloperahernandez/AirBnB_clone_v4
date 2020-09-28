@@ -103,3 +103,11 @@ section.filters > button:hover {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+.locations > h4 {
+	width: 230px;
+	height: 17px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
