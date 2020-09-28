@@ -19,13 +19,13 @@ def closedb(foo):
     storage.close()
 
 
-@app.route('/2-hbnb', strict_slashes=False)
+@app.route('/100-hbnb/', strict_slashes=False)
 def hbnb_filters():
-    """Route /2-hbnb"""
+    """Route /4-hbnb"""
     states = storage.all(State)
     amenities = storage.all(Amenity)
     places = storage.all(Place)
-    return render_template('2-hbnb.html',
+    return render_template('100-hbnb.html',
                            states=states,
                            amenities=amenities,
                            places=places,

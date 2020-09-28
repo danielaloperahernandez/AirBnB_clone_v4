@@ -16,6 +16,8 @@ $('document').ready(() => {
   });
 
   const amenities = {};
+  const states = {};
+  const cities = {};
 
   $('div.amenities li input').change(function () {
     if ($(this).is(':checked')) {
@@ -26,8 +28,34 @@ $('document').ready(() => {
     $('div.amenities h4').text(Object.values(amenities).join(', '));
   });
 
+  $('div.locations h2 > input').change(
+        function () {
+          if ($(this).is(':checked')) {
+            states[($(this).attr('data-id'))] = $(this).attr('data-name');
+          } else {
+            delete states[($(this).attr('data-id'))];
+          }
+          const both = Object.values(states).concat(Object.values(cities));
+          $('div.locations h4').html(both.join(', ') || '&nbsp;');
+        });
+
+  $('div.locations li > input').change(
+    function () {
+      if ($(this).is(':checked')) {
+        cities[($(this).attr('data-id'))] = $(this).attr('data-name');
+      } else {
+        delete cities[($(this).attr('data-id'))];
+      }
+      const both = Object.values(states).concat(Object.values(cities));
+      $('div.locations h4').html(both.join(', ') || '&nbsp;');
+    });
+
   $('button').click(() => {
-    const data = { amenities: Object.keys(amenities) };
+    const data = { 
+      amenities: Object.keys(amenities),
+      states: Object.keys(states),
+      cities: Object.keys(cities)
+    };
     $.ajax({
       url: 'http://localhost:5001/api/v1/places_search',
       type: 'POST',
